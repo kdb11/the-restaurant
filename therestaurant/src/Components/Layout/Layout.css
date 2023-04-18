@@ -3,21 +3,21 @@
     align-items: center;
 }
 
-.left--FooterText {
+.leftFooterText {
     display: flex;
     flex-direction: row;
     width: 20vw;
     justify-content: space-evenly;
 }
 
-.middle--FooterText {
+.middleFooterText {
     display: flex;
     flex-direction: row;
     width: 25vw;
     justify-content: space-evenly;
 }
 
-.right--FooterText {
+.rightFooterText {
     display: flex;
     flex-direction: row;
     width: 20vw;
@@ -28,6 +28,8 @@ header {
     height: 10vh;
     color: white;
     font-size: 25px;
+    position: relative;
+    z-index: 1;
 }
 
 main {

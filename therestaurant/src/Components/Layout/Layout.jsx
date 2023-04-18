@@ -5,8 +5,8 @@ export const Layout = () => {
 
     return (
         <>
-            <header className="wrapper">
-                <h1> Restaurang namn </h1>
+            <header className="headerWrapper">
+                <h1><a href="/">Restaurang namn</a></h1>
                 <h2><a href="/Reserve">Reservationer</a></h2>
             </header>
 
@@ -15,12 +15,12 @@ export const Layout = () => {
             </main>
 
             <footer className="wrapper">
-                <div className="left--FooterText">
+                <div className="leftFooterText">
                     <p>adress</p>
                     <p>nummer</p>
                 </div>
 
-                <div className="middle--FooterText">
+                <div className="middleFooterText">
                     <a href="/"> mat</a>
                     <p> | </p>
                     <a href="/Reserve"> reservationer</a>
@@ -30,7 +30,7 @@ export const Layout = () => {
                     <a href="/"> admin </a>
                 </div>
 
-                <div className="right--FooterText">
+                <div className="rightFooterText">
                     <a href="/">fb</a>
                     <a href="/">ig</a>
                 </div>
