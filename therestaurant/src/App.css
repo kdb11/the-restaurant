@@ -17,6 +17,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -1;
 }
 
 @keyframes fade {
@@ -45,7 +46,7 @@ img {
   top: 0;
   left: 0;
   animation: fade 15s ease-in-out infinite alternate;
-  z-index: -1;
+  z-index: -2;
 }
 
 img:nth-of-type(1) {
