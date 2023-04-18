@@ -1,0 +1,20 @@
+header {
+    height: 10vh;
+    border: 1px solid gray;
+}
+
+main {
+    height: 75vh;
+    border: 1px solid greenyellow;
+}
+
+footer {
+    height: 14vh;
+    border: 1px solid pink;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
