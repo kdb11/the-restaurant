@@ -3,17 +3,31 @@
     align-items: center;
 }
 
-.footerText {
+.left--FooterText {
     display: flex;
     flex-direction: row;
-    word-spacing: 1px;
+    width: 20vw;
+    justify-content: space-evenly;
+}
+
+.middle--FooterText {
+    display: flex;
+    flex-direction: row;
+    width: 25vw;
+    justify-content: space-evenly;
+}
+
+.right--FooterText {
+    display: flex;
+    flex-direction: row;
+    width: 20vw;
+    justify-content: space-evenly;
 }
 
 header {
     height: 10vh;
-    border: 1px solid gray;
     color: white;
-    font-size: 50px;
+    font-size: 25px;
 }
 
 main {
@@ -22,8 +36,8 @@ main {
 }
 
 footer {
-    height: 4vh;
-    background-color: white;
+    height: 5vh;
+    background-color: rgba(255, 255, 255, 0.75);
     bottom: 0px;
     position: absolute;
     width: 100%;

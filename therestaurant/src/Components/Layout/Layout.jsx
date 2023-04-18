@@ -5,24 +5,32 @@ export const Layout = () => {
 
     return (
         <>
-            <header className="wrapper">Header</header>
+            <header className="wrapper">
+                <h1> Restaurang namn </h1>
+                <h2><a href="/Reserve">Reservationer</a></h2>
+            </header>
+
             <main className="wrapper">
                 <Outlet />
-                </main>
+            </main>
+
             <footer className="wrapper">
-                <div className="footerText">
+                <div className="left--FooterText">
                     <p>adress</p>
                     <p>nummer</p>
                 </div>
 
-                <div className="footerText">
-                    <a href="/"> mat | </a>
-                    <a href="/Reserve"> reservationer | </a>
-                    <a href="/"> gdpr | </a>
+                <div className="middle--FooterText">
+                    <a href="/"> mat</a>
+                    <p> | </p>
+                    <a href="/Reserve"> reservationer</a>
+                    <p> | </p>
+                    <a href="/"> gdpr</a>
+                    <p> | </p>
                     <a href="/"> admin </a>
                 </div>
 
-                <div className="footerText">
+                <div className="right--FooterText">
                     <a href="/">fb</a>
                     <a href="/">ig</a>
                 </div>
