@@ -3,7 +3,7 @@ import App from './App';
 import { Reserve } from './Components/Reserve';
 import { Contact } from './Components/Contact';
 import { Layout } from './Components/Layout/Layout';
-import { Admin } from './Components/Admin';
+import { Admin } from './Components/Admin/Admin';
 
 export const router = createBrowserRouter([
     {
