@@ -25,9 +25,7 @@ export const Layout = () => {
                     <p> | </p>
                     <a href="/Reserve"> reservationer</a>
                     <p> | </p>
-                    <a href="/"> gdpr</a>
-                    <p> | </p>
-                    <a href="/"> admin </a>
+                    <a href="/Admin"> admin </a>
                 </div>
 
                 <div className="rightFooterText">

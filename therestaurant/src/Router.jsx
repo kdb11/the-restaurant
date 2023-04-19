@@ -3,6 +3,7 @@ import App from './App';
 import { Reserve } from './Components/Reserve';
 import { Contact } from './Components/Contact';
 import { Layout } from './Components/Layout/Layout';
+import { Admin } from './Components/Admin';
 
 export const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
             {
                 path: "/Contact",
                 element: <Contact />
+            },
+            {
+                path: "/Admin",
+                element: <Admin />
             }
         ]
     },
