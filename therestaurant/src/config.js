@@ -1,7 +1,7 @@
-export const TODOS_LIST_ADRESS = 
+export const RESTAURANT_LIST_ADRESS = 
 "0xB7A604932F5159bEc1eC4E860563CD60E351270E";
 
-export const TODO_LIST_ABI = [
+export const RESTAURANT_LIST_ABI = [
     {
       "inputs": [],
       "stateMutability": "nonpayable",
