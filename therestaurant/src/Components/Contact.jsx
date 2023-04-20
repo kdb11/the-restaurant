@@ -3,9 +3,13 @@ import './Contact.css';
 
 export const Contact = () => {
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
     return ( 
         <div className='form-box'>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className='form-group'>
                     <input type="text" placeholder="Your Name" className='form-input'></input>
                 </div>
