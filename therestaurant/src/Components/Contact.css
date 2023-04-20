@@ -1,0 +1,44 @@
+.form-box {
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.form-group {
+  margin-bottom: 1.5em;
+}
+
+.form-input::placeholder {
+  color: black
+}
+
+.form-input:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.form-input {
+  box-shadow: none;
+  border-radius: 0;
+  border-color: #ccc;
+  border-style: none none solid none;
+  width: 100%;
+  font-size: 1.25em;
+}
+
+textarea {
+  resize: none;
+}
+
+.btn {
+  background: 0 0 #fff;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  font-size: 1em;
+}
+
+.btn:hover {
+  border-color: black;
+}
