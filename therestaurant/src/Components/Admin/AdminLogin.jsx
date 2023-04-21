@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Admin.css';
 
 const AdminLogin = () => {
   const [username, setUsername] = useState('');
@@ -26,26 +27,28 @@ const AdminLogin = () => {
 
   if (isLoggedIn) {
     return (
-      <div>
-        <h1>Welcome, Admin!</h1>
-        <button onClick={handleLogout}>Logout</button>
+      <div className='logoutForm'>
+        <div className='loginContainer'>
+          <h1>Welcome, Admin!</h1>
+          <button className='logoutBtn' onClick={handleLogout}>Logout</button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </label>
-      <br />
-      <button onClick={handleLogin}>Login</button>
+    <div className='loginForm'>
+      <div className='loginContainer'>
+        <label>
+          <input placeholder='Username' type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+        </label>
+        <br />
+        <label>
+          <input placeholder='Password' type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </label>
+        <br />
+        <button className='loginBtn' onClick={handleLogin}>Login</button>
+      </div>
     </div>
   );
 };
