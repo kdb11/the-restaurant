@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.adminContainer {
+    height: 95vh;
+    width: 50%;
+    position: relative;
+    display: flex;
+  }
+
+.adminImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    animation:none;
+    z-index: -2;
+}
+
+.loginForm, .logoutForm {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    top: 50%;
+}
+
+.loginContainer, .logoutContainer {
+    position: relative;
+    right: 50%;
+    bottom: 50%;
+}
+
+input{
+    text-align:center;
+ }
+
+.loginBtn, .logoutBtn {
+    position: relative;
+    left: 38%;
+}

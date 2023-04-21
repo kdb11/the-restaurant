@@ -17,16 +17,16 @@ export const Layout = () => {
 
             <footer className="wrapper">
                 <div className="leftFooterText">
-                    <p>adress</p>
-                    <p>nummer</p>
+                    <p>155 W 51ST ST, NEW YORK, NY 10019</p>
+                    <p>(212) 554-1515</p>
                 </div>
 
                 <div className="middleFooterText">
-                    <a href="/"> mat</a>
+                    <a href="/"> Food Menu</a>
                     <p> | </p>
-                    <a href="/Reserve"> reservationer</a>
+                    <a href="/Reserve"> Reservations</a>
                     <p> | </p>
-                    <a href="/Admin"> admin </a>
+                    <a href="/Admin"> Admin </a>
                 </div>
 
                 <div className="rightFooterText">
