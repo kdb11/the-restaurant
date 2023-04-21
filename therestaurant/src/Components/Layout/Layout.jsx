@@ -6,9 +6,8 @@ export const Layout = () => {
     return (
         <>
             <header className="headerWrapper">
-                <h1><a href="/">Restaurang namn</a></h1>
-                <h2><a href="/Reserve">Reservationer</a></h2>
-                <h2><a href="/Contact"> contact </a></h2>
+                <h1><a href="/">Restaurant name</a></h1>
+                <h2><a href="/Reserve">Reservations</a></h2>
             </header>
 
             <main className="wrapper">
@@ -25,6 +24,8 @@ export const Layout = () => {
                     <a href="/"> Food Menu</a>
                     <p> | </p>
                     <a href="/Reserve"> Reservations</a>
+                    <p> | </p>
+                    <a href="/Contact"> Contact </a>
                     <p> | </p>
                     <a href="/Admin"> Admin </a>
                 </div>

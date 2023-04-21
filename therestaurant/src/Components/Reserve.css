@@ -28,5 +28,6 @@
 
 .bookContainer {
     position:absolute;
-    top: 250px;
+    top: 30%;
+    left: 10%;
 }
