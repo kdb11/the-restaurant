@@ -8,7 +8,6 @@ export const Layout = () => {
             <header className="headerWrapper">
                 <h1><a href="/">Restaurang namn</a></h1>
                 <h2><a href="/Reserve">Reservationer</a></h2>
-                <h2><a href="/Contact"> contact </a></h2>
             </header>
 
             <main className="wrapper">
