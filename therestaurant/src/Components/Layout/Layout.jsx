@@ -33,8 +33,8 @@ export const Layout = () => {
                 </div>
 
                 <div className="rightFooterText">
-                    <a className="icons" href="https://facebook.com" target="_blank"><FontAwesomeIcon icon={faFacebook}/></a>
-                    <a className="icons" href="https://instagram.com" target="_blank"><FontAwesomeIcon icon={faInstagram}/></a>
+                    <a className="icons" href="https://facebook.com" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faFacebook}/></a>
+                    <a className="icons" href="https://instagram.com" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faInstagram}/></a>
                 </div>
             </footer>
         </>
