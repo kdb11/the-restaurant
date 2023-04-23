@@ -23,7 +23,8 @@
 }
 
 .reservationText {
-    width: 70%;
+    width: 80%;
+    font-size:smaller;
 }
 
 .bookContainer {
