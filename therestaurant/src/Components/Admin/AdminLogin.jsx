@@ -48,18 +48,18 @@ const AdminLogin = () => {
           <label>&nbsp;Username</label>
           <div >
             <label>
-              <input id="user-email" className="form-content" type="text" required value={username} onChange={(e) => setUsername(e.target.value)} />
+              <input id="username" className="form-content" type="text" required autoComplete='on' value={username} onChange={(e) => setUsername(e.target.value)} />
             </label>
             <div className="form-border"></div>
             <br />
-            <label for="user-password">&nbsp;Password</label>
+            <label>&nbsp;Password</label>
             <br />
             <label>
-              <input id="user-password" className="form-content" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+              <input id="user-password" className="form-content" type="password" required autoComplete='on' value={password} onChange={(e) => setPassword(e.target.value)} />
             </label>
             <div className="form-border"></div>
             <br />
-            <button id="submit-btn" onClick={handleLogin}>Login</button>
+            <button type='button' id="submit-btn" onClick={handleLogin}>Login</button>
           </div>
         </form>
       </div> 
