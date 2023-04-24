@@ -29,6 +29,35 @@
 
 .bookContainer {
     position:absolute;
-    top: 30%;
+    top: 20%;
     left: 10%;
+}
+
+.card {
+  background: #fbfbfb;
+  border-radius: 8px;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  height: fit-content;
+  margin: 6rem auto 8.1rem auto;
+  width: 50%;
+  position: relative;
+  right: 5%;
+  top: 22.5%;
+}
+.card-content {
+  padding: 15px 44px;
+}
+.chooseTime {
+  display: flex;
+  flex-direction: row;
+}
+
+.padding{
+  padding-left: 20px;
+}
+.buttonContainer{
+  transform: translate(-16%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

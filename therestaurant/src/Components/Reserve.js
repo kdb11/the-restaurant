@@ -65,21 +65,69 @@ export const Reserve = () => {
                     <p>Saturday: 11:00AM – 5:00PM</p>
                     <p>Sunday: Closed</p>
                     <br/>
-                </div>
+                </div> 
 
-                {/* <button type="submit" >Book</button>  */}
-                {/* <button value="bookingFetch" onClick={handleClick}>Fetch bookings</button> */}
-                <button onClick={restaurantCreate}>Create a restaurant</button> 
-           
+            <div className="card">
+                <div className="card-content">
+                    <div id="card-title">
+                    <h2>Reserve</h2>
+                    <br />
+                    <div className="underline-title"></div>
+                </div>
                 <form>
-                    <input type="number" placeholder="Number of guests" name="guests" value={guests} onChange={(e) => {setGuests(e.target.value)}}></input>
-                    <input type="text" placeholder="Name" name="name" value={name} onChange={(e) => {setName(e.target.value)}}></input>
-                    <input type="date" name="date" value={date} onChange={(e) => {setDate(e.target.value)}}></input>
-                    <input type="radio" name="time" value="18" onChange={(e) => {setTime(e.target.value)}}></input>
-                    <input type="radio" name="time" value="21" onChange={(e) => {setTime(e.target.value)}}></input>
-                    <input type="number" placeholder="id" name="id" value={id} onChange={(e) => {setId(e.target.value)}}></input>
-                    <button value="bookingCreate" onClick={handleClick}>Create a booking</button>
+
+                    <label>Date</label>
+                    <br />
+                    <label>
+                        <input type="date" className="form-content" name="date" value={date} onChange={(e) => {setDate(e.target.value)}}></input>
+                    </label>
+                    <div className="form-border"></div>
+                    <br />
+
+                    <label>Name</label>
+                    <br/>
+                    <label>
+                        <input type="text" className="form-content" name="name" value={name} onChange={(e) => {setName(e.target.value)}}></input>
+                    </label>
+                    <div className="form-border"></div>
+                    <br />
+
+                    <label>Number of guests</label>
+                    <br />
+                    <label>
+                        <input type="number" className="form-content" name="guests" value={guests} onChange={(e) => {setGuests(e.target.value)}}></input>
+                    </label>
+                    <div className="form-border"></div>
+                    <br />
+                    
+                    <label>Time</label>
+                    <br />
+                    <br />
+                    <label className="chooseTime">
+                        <p>18:00</p>
+                        <input type="radio" className="form-content" name="time" value="18" onChange={(e) => {setTime(e.target.value)}}></input>
+                        <p className="padding">21:00</p>
+                        <input type="radio" className="form-content" name="time" value="21" onChange={(e) => {setTime(e.target.value)}}></input>
+                    </label>
+                    <div className="form-border"></div>
+                    <br />
+                    
+                    <label>Id</label>
+                    <br />
+                    <label><input type="number" className="form-content" placeholder="id" name="id" value={id} onChange={(e) => {setId(e.target.value)}}></input>
+                    </label>
+                    <div className="form-border"></div>
+                    <br />
+                    
+                    <div className="buttonContainer">
+                        <button id="submit-btn" value="bookingCreate" onClick={handleClick}>Create a booking</button>
+                        {/* <button type="submit" >Book</button>  */}
+                        {/* <button value="bookingFetch" onClick={handleClick}>Fetch bookings</button> */}
+                        <button id="submit-btn" onClick={restaurantCreate}>Create a restaurant</button>
+                    </div>
                 </form>
+                </div> 
+            </div>
                 {mappedList}
             </div>
         </div>
