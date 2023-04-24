@@ -42,22 +42,22 @@ const AdminLogin = () => {
         <div id="card-title">
           <h2>Admin</h2>
           <br />
-          <div class="underline-title"></div>
+          <div className="underline-title"></div>
         </div>
-        <form class="form">
+        <form className="form">
           <label>&nbsp;Username</label>
           <div >
             <label>
-              <input id="user-email" class="form-content" type="text" required value={username} onChange={(e) => setUsername(e.target.value)} />
+              <input id="user-email" className="form-content" type="text" required value={username} onChange={(e) => setUsername(e.target.value)} />
             </label>
-            <div class="form-border"></div>
+            <div className="form-border"></div>
             <br />
             <label for="user-password">&nbsp;Password</label>
             <br />
             <label>
-              <input id="user-password" class="form-content" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+              <input id="user-password" className="form-content" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
             </label>
-            <div class="form-border"></div>
+            <div className="form-border"></div>
             <br />
             <button id="submit-btn" onClick={handleLogin}>Login</button>
           </div>
