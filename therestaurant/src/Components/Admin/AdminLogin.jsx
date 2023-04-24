@@ -37,18 +37,32 @@ const AdminLogin = () => {
   }
 
   return (
-    <div className='loginForm'>
-      <div className='loginContainer'>
-        <label>
-          <input placeholder='Username' type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          <input placeholder='Password' type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <br />
-        <button className='loginBtn' onClick={handleLogin}>Login</button>
-      </div>
+    <div id="card">
+      <div id="card-content">
+        <div id="card-title">
+          <h2>Admin</h2>
+          <br />
+          <div class="underline-title"></div>
+        </div>
+        <form class="form">
+          <label>&nbsp;Username</label>
+          <div >
+            <label>
+              <input id="user-email" class="form-content" type="text" required value={username} onChange={(e) => setUsername(e.target.value)} />
+            </label>
+            <div class="form-border"></div>
+            <br />
+            <label for="user-password">&nbsp;Password</label>
+            <br />
+            <label>
+              <input id="user-password" class="form-content" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+            </label>
+            <div class="form-border"></div>
+            <br />
+            <button id="submit-btn" onClick={handleLogin}>Login</button>
+          </div>
+        </form>
+      </div> 
     </div>
   );
 };
