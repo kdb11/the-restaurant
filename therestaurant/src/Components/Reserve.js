@@ -21,9 +21,9 @@ export const Reserve = () => {
         getRestaurant();
     });
 
-    // const restaurantCreate = async () => { 
-       // restaurantListContract.methods.createRestaurant(0).send({from: account});
-    //};
+     const restaurantCreate = async () => { 
+        restaurantListContract.methods.createRestaurant(0).send({from: account});
+    };
 
     const mappedList = bookingsList.bookings.map((index) => {
         return(
@@ -48,20 +48,40 @@ export const Reserve = () => {
    
 
     return ( <>
-        <div >
-            <button type="submit" >Book</button>
-            <button value="bookingFetch" onClick={handleClick}>Fetch bookings</button>
-            {/* <button onClick={restaurantCreate}>Create a restaurant</button> */}
-            <form>
-                <input type="number" placeholder="Number of guests" name="guests" value={guests} onChange={(e) => {setGuests(e.target.value)}}></input>
-                <input type="text" placeholder="Name" name="name" value={name} onChange={(e) => {setName(e.target.value)}}></input>
-                <input type="date" name="date" value={date} onChange={(e) => {setDate(e.target.value)}}></input>
-                <input type="radio" name="time" value="18" onChange={(e) => {setTime(e.target.value)}}></input>
-                <input type="radio" name="time" value="21" onChange={(e) => {setTime(e.target.value)}}></input>
-                <input type="number" placeholder="id" name="id" value={id} onChange={(e) => {setId(e.target.value)}}></input>
-                <button value="bookingCreate" onClick={handleClick}>Create a booking</button>
-            </form>
+        <div className='reserveContainer'>
+            <img className='reserveImg' src='https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2274&q=80' alt='restaurantOutside'></img>
+            
+
+            <div className='bookContainer'>
+                <div className='reservationText'> 
+                    <p>RESERVATIONS:    212 554 1515</p>
+                    <br/>
+                    <p>Beginning on the first day of each month, excluding Sundays, reservations can be made for the entire following month. Our online reservation system is live 24/7. Reservations are not accepted in the Lounge.</p>
+                    <br/>
+                    <p>We are currently accepting reservations through April 30th. May reservations will begin on Saturday, April 1st online via RESY starting at 7:00am ET for party of 1 to 4 guests, by phone at 10:00am ET for party of 5 to 10 guests. Credit card information is required to hold all reservations.</p>    
+                    <br/>
+                    <p><u>Reservation Line Hours</u></p> 
+                    <p>Monday – Friday: 10:00AM – 6:00PM</p> 
+                    <p>Saturday: 11:00AM – 5:00PM</p>
+                    <p>Sunday: Closed</p>
+                    <br/>
+                </div>
+
+                {/* <button type="submit" >Book</button>  */}
+                {/* <button value="bookingFetch" onClick={handleClick}>Fetch bookings</button> */}
+                <button onClick={restaurantCreate}>Create a restaurant</button> 
+           
+                <form>
+                    <input type="number" placeholder="Number of guests" name="guests" value={guests} onChange={(e) => {setGuests(e.target.value)}}></input>
+                    <input type="text" placeholder="Name" name="name" value={name} onChange={(e) => {setName(e.target.value)}}></input>
+                    <input type="date" name="date" value={date} onChange={(e) => {setDate(e.target.value)}}></input>
+                    <input type="radio" name="time" value="18" onChange={(e) => {setTime(e.target.value)}}></input>
+                    <input type="radio" name="time" value="21" onChange={(e) => {setTime(e.target.value)}}></input>
+                    <input type="number" placeholder="id" name="id" value={id} onChange={(e) => {setId(e.target.value)}}></input>
+                    <button value="bookingCreate" onClick={handleClick}>Create a booking</button>
+                </form>
                 {mappedList}
+            </div>
         </div>
         </>
         )
