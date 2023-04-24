@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import "./Layout.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+//import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 
 export const Layout = () => {
 
@@ -33,8 +33,8 @@ export const Layout = () => {
                 </div>
 
                 <div className="rightFooterText">
-                    <a className="icons" href="https://facebook.com" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faFacebook}/></a>
-                    <a className="icons" href="https://instagram.com" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faInstagram}/></a>
+                    {/* <a className="icons" href="https://facebook.com" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faFacebook}/></a> */}
+                    {/* <a className="icons" href="https://instagram.com" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faInstagram}/></a> */}
                 </div>
             </footer>
         </>
