@@ -57,3 +57,22 @@ a:active { text-decoration: underline; }
 .icons {
     font-size:x-large;
 }
+
+.menu-btn {
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 70px;
+    padding: 20px;
+}
+
+.headerWrapper {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+}
+
+.headerText {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
