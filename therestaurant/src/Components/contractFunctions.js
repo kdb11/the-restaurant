@@ -1,5 +1,7 @@
 import Web3 from "web3";
 import { RESTAURANT_LIST_ABI, RESTAURANT_LIST_ADRESS } from "../config";
+import { useState } from "react";
+
 
 export const web3 = new Web3(Web3.givenProvider || "https://localhost:7545");
 export const restaurantListContract = new web3.eth.Contract(RESTAURANT_LIST_ABI, RESTAURANT_LIST_ADRESS);
@@ -12,10 +14,34 @@ export const bookingCreate = async (account, Guests, name, date, time, id) => {
 /*     console.log(restaurantListContract.methods.createBooking(6, "John", 12, 21, 0).send({from: account})) */
 };
 export const bookingFetch = async (id) => {
+
     let bookings = await restaurantListContract.methods.getBookings(id).call();
+    console.log(bookings);
     return (bookings);
+
 };
 export const bookings = async (index) => { 
-    const x = restaurantListContract.methods.bookings(index).call();
-    console.log(x);
+    const x = await restaurantListContract.methods.bookings(index).call();
+    const objectInfo = Object.values(x).slice(6);
+    console.log("Object: ", objectInfo);
+    console.log("X: ", x);
+    return x;
 };
+
+/* 
+export function MappingTest(bookingsIndex) {
+    const [bookingsList, setBookingsList] = useState({ bookings: [] });
+
+    const mappedList = bookingsIndex.bookings.map( async (index) => {
+        return (
+        setBookingsList({ bookings: await bookingFetch(index)}),
+        console.log("BookingList !", bookingsList)
+        );
+    });
+
+    return(
+    <>
+    {bookingsList}
+    </>
+    );
+} */

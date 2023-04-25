@@ -4,6 +4,35 @@
     box-sizing: border-box;
   }
 
+.reserveContainer {
+    height: 95vh;
+    width: 50%;
+    position: relative;
+    display: flex;
+  }
+
+.reserveImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    animation:none;
+    z-index: -2;
+}
+
+.reservationText {
+    width: 80%;
+    font-size:smaller;
+}
+
+.bookContainer {
+    position:absolute;
+    top: 30%;
+    left: 10%;
+}
+
 .adminContainer {
     height: 95vh;
     width: 50%;
