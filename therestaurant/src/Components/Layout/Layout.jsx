@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import "./Layout.css";
+import Pdf from '../Menu/therestaurantmenu.pdf';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 
@@ -23,7 +24,7 @@ export const Layout = () => {
                 </div>
 
                 <div className="middleFooterText">
-                    <a href="/"> Food Menu</a>
+                    <a href={Pdf} target="_blank" rel="noreferrer"> Food Menu</a>
                     <p> | </p>
                     <a href="/Reserve"> Reservations</a>
                     <p> | </p>
