@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap');
+
 .wrapper {
     display: flex;
     align-items: center;
@@ -74,5 +76,18 @@ a:active { text-decoration: underline; }
 .headerText {
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
+    padding-top: 10px;
+}
+
+.brandName {
+    font-family: 'Castoro Titling', cursive;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.secondHeaderText{
+    padding-left: 10px;
+    font-family: 'Castoro Titling', cursive;
+    font-size: 20px;
+    font-weight: 400;
 }

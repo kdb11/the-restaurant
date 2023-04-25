@@ -7,7 +7,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 function Menu({ isOpen, onChange }) {
   return (
     <div className={`Menu ${isOpen && "open"}`}>
-      <span className="material-icons btn-close" onClick={() => onChange(false)}>
+      <span className="btn-close" onClick={() => onChange(false)}>
       <FontAwesomeIcon icon={faXmark} />
       </span>
       <div className="Menu-items">

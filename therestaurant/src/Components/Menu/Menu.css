@@ -7,7 +7,7 @@
     left: 0;
     top: 0;
     z-index: 1;
-    background: #327172;
+    background: black;
     transform: translate(-100%);
     transition: all .45s;
 }

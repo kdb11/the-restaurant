@@ -26,13 +26,13 @@ export const Layout = () => {
     return (
         <>
             <header className="headerWrapper">
-                <span className="material-icons menu-btn" onClick={() => setIsOpen(true)}>
+                <span className="menu-btn" onClick={() => setIsOpen(true)}>
                     <FontAwesomeIcon icon={faBars} style={{color: navBg}} />
                 </span>
                 <Menu isOpen={isOpen} onChange={setIsOpen}></Menu>
                 <div className="headerText">
-                    <h1 style={{color: navBg}} ><a href="/">Restaurant name</a></h1>
-                    <h3 style={{color: navBg}} ><a href="/Reserve">Reservations</a></h3>
+                    <h1 style={{color: navBg}} ><a href="/" className="brandName">THE BLOCK</a></h1>
+                    <h3 style={{color: navBg}} ><a href="/Reserve" className="secondHeaderText">RESERVATIONS</a></h3>
                 </div>
             </header>
 
