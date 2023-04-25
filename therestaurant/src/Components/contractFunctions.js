@@ -22,9 +22,9 @@ export const bookingFetch = async (id) => {
 };
 export const bookings = async (index) => { 
     const x = await restaurantListContract.methods.bookings(index).call();
-    const objectInfo = Object.values(x).slice(6);
+/*     const objectInfo = Object.values(x).slice(6);
     console.log("Object: ", objectInfo);
-    console.log("X: ", x);
+    console.log("X: ", x); */
     return x;
 };
 

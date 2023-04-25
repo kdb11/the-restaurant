@@ -42,7 +42,6 @@ export const Admin = () => {
         }));
       };
 
-
       const makeList = () =>{ bookingsIndex.bookingsIndex.map( async (index) => {
           return (
             addBooking(await bookings(index))
@@ -50,7 +49,10 @@ export const Admin = () => {
         })
       }
 
-/*       const makeAnotherList = Object.entries(bookingsList.bookings).forEach(([key, value]) => {
+      const listOfDates = bookingsList.bookings.map(booking => ({date: booking.date, time: booking.time}));
+      console.log("List of dates: ", listOfDates);
+
+ /*      const makeAnotherList = Object.entries(bookingsList.bookings).forEach(([key, value]) => {
         console.log("Key: ",{key}, "Value: ", `${value}`); 
       }); */
 
@@ -106,8 +108,10 @@ export const Admin = () => {
       <AdminLogin />
     </div>
 
-{/*     {makeAnotherList} */}
+    {/* {makeAnotherList} */}
   </>
   );
 };
+
+//To show dates 1) click fetch, 2) Make bookings => view console for feedback
 export default Admin;
