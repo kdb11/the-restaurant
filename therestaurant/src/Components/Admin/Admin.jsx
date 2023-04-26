@@ -60,7 +60,6 @@ export const Admin = () => {
           </p>
       );
   })
-    console.log("myBookingsName: ", myBookingsName);
 
 
   const handleClick = async (e) => {
