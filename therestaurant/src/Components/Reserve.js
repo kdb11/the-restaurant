@@ -6,11 +6,13 @@ import './Reserve.css';
 export const Reserve = () => {
     const [account, setAccount] = useState("");
     const [guests, setGuests] = useState("");
+    const [bookingsIndex, setBookingsIndex] = useState({ bookingsIndex: [] });
     const [bookingsList, setBookingsList] = useState({ bookings: []});
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     const [id, setId] = useState("");
+    const [index, setIndex] = useState("");
 
     useEffect(() => {
         const getRestaurant = async () => {
@@ -25,23 +27,52 @@ export const Reserve = () => {
         restaurantListContract.methods.createRestaurant(0).send({from: account});
     };
 
-    const mappedList = bookingsList.bookings.map((index) => {
-        return(
-            bookings(index),
-        <div>
+    const mappedList = bookingsIndex.bookingsIndex.map(  (index, i) => {
+        return (
+          <div id={i}>
             {index}-
-        </div>
+          </div>
         );
-    });
+      });
 
-    const handleClick = async (e) =>{
-        switch (e.target.value){
-            case "bookingFetch":
-                setBookingsList({ bookings: await bookingFetch(0)});
-            case "bookingCreate":
-                bookingCreate(account, guests, name, date, time, id);
-        }
+      const addBooking = (index) => {
+        setBookingsList((prevValues) => ({
+          ...prevValues,
+          bookings: [...prevValues.bookings, index]
+        }));
+      };
+
+      const makeList = () =>{ bookingsIndex.bookingsIndex.map( async (index) => {
+        return (
+          addBooking(await bookings(index))
+        );
+      })
     }
+
+    const mappedBookings = bookingsList.bookings.map((bookingsInfo, index) => {
+        return (
+            <p key={index}>
+                {bookingsInfo.name} - {bookingsInfo.numberOfGuests} - kl.{bookingsInfo.time} -{bookingsInfo.date} 
+            </p>
+        );
+    })
+
+    const handleClick = async (e) => {
+        switch (e.target.value) {
+          case "bookingFetch":
+            setBookingsIndex({ bookingsIndex: await bookingFetch(0) });
+            break;
+          case "bookingCreate":
+            bookingCreate(account, guests, name, date, time, id);
+            break;
+          default: console.log("")
+            break;
+        }
+      }
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+      }
 
     console.log("guests: ", guests);
     console.log("bookings: ", bookingsList)
@@ -74,7 +105,7 @@ export const Reserve = () => {
                     <br />
                     <div className="underline-title"></div>
                 </div>
-                <form>
+                <form onSubmit={handleSubmit}>
 
                     <label>Date</label>
                     <br />
@@ -122,12 +153,14 @@ export const Reserve = () => {
                     <div className="buttonContainer">
                         <button id="submit-btn" value="bookingCreate" onClick={handleClick}>Create a booking</button>
                         {/* <button type="submit" >Book</button>  */}
-                        {/* <button value="bookingFetch" onClick={handleClick}>Fetch bookings</button> */}
+                        <button value="bookingFetch" onClick={handleClick}>Fetch bookings</button>
+                        <button value="bookingFetch" onClick={makeList}>Make bookings</button>
                         <button id="submit-btn" onClick={restaurantCreate}>Create a restaurant</button>
                     </div>
                 </form>
                 </div> 
             </div>
+                {mappedBookings}<br/>
                 {mappedList}
             </div>
         </div>
