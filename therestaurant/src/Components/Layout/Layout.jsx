@@ -1,15 +1,39 @@
 import { Outlet } from "react-router-dom";
 import "./Layout.css";
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-//import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import Pdf from '../Menu/therestaurantmenu.pdf';
+import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import Menu from "../Menu/Menu";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 export const Layout = () => {
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [navBg, setNavBg] = useState("white");
+    const location = useLocation();
+
+    useEffect(()=>{ 
+        if(location.pathname === "/"){
+            setNavBg("white")
+        }
+        else {
+            setNavBg("black")
+        }
+    },[location]);
 
     return (
         <>
             <header className="headerWrapper">
-                <h1><a href="/">Restaurant name</a></h1>
-                <h2><a href="/Reserve">Reservations</a></h2>
+                <span className="menu-btn" onClick={() => setIsOpen(true)}>
+                    <FontAwesomeIcon icon={faBars} style={{color: navBg}} />
+                </span>
+                <Menu isOpen={isOpen} onChange={setIsOpen}></Menu>
+                <div className="headerText">
+                    <h1 style={{color: navBg}} ><a href="/" className="brandName">THE BLOCK</a></h1>
+                    <h3 style={{color: navBg}} ><a href="/Reserve" className="secondHeaderText">RESERVATIONS</a></h3>
+                </div>
             </header>
 
             <main className="wrapper">
@@ -23,7 +47,7 @@ export const Layout = () => {
                 </div>
 
                 <div className="middleFooterText">
-                    <a href="/"> Food Menu</a>
+                    <a href={Pdf} target="_blank" rel="noreferrer"> Food Menu</a>
                     <p> | </p>
                     <a href="/Reserve"> Reservations</a>
                     <p> | </p>
@@ -33,8 +57,8 @@ export const Layout = () => {
                 </div>
 
                 <div className="rightFooterText">
-                    {/* <a className="icons" href="https://facebook.com" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faFacebook}/></a> */}
-                    {/* <a className="icons" href="https://instagram.com" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faInstagram}/></a> */}
+                    <a className="icons" href="https://facebook.com" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faFacebook}/></a>
+                    <a className="icons" href="https://instagram.com" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faInstagram}/></a>
                 </div>
             </footer>
         </>

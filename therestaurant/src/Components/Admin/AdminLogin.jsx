@@ -37,18 +37,32 @@ const AdminLogin = () => {
   }
 
   return (
-    <div className='loginForm'>
-      <div className='loginContainer'>
-        <label>
-          <input placeholder='Username' type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          <input placeholder='Password' type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <br />
-        <button className='loginBtn' onClick={handleLogin}>Login</button>
-      </div>
+    <div id="card">
+      <div id="card-content">
+        <div id="card-title">
+          <h2>Admin</h2>
+          <br />
+          <div className="underline-title"></div>
+        </div>
+        <form className="form">
+          <label>&nbsp;Username</label>
+          <div >
+            <label>
+              <input id="username" className="form-content" type="text" required autoComplete='on' value={username} onChange={(e) => setUsername(e.target.value)} />
+            </label>
+            <div className="form-border"></div>
+            <br />
+            <label>&nbsp;Password</label>
+            <br />
+            <label>
+              <input id="user-password" className="form-content" type="password" required autoComplete='on' value={password} onChange={(e) => setPassword(e.target.value)} />
+            </label>
+            <div className="form-border"></div>
+            <br />
+            <button type='button' id="submit-btn" onClick={handleLogin}>Login</button>
+          </div>
+        </form>
+      </div> 
     </div>
   );
 };

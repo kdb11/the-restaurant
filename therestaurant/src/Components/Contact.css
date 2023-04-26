@@ -61,3 +61,17 @@
     animation:none;
     z-index: -2;
 }
+
+.contactCard {
+  background: #fbfbfb;
+  border-radius: 8px;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  height: fit-content;
+  margin: 6rem auto 8.1rem auto;
+  width: 50%;
+  position: relative;
+  top: 22.5%;
+}
+.contactCard-content {
+  padding: 15px 44px;
+}
