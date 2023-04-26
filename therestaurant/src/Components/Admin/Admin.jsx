@@ -49,12 +49,19 @@ export const Admin = () => {
         })
       }
 
-      const listOfDates = bookingsList.bookings.map(booking => ({date: booking.date, time: booking.time}));
-      console.log("List of dates: ", listOfDates);
+      /* const listOfDates = bookingsList.bookings.map(booking => ({date: booking.date, time: booking.time, name: booking.name})); */
 
- /*      const makeAnotherList = Object.entries(bookingsList.bookings).forEach(([key, value]) => {
-        console.log("Key: ",{key}, "Value: ", `${value}`); 
-      }); */
+
+    
+    const mappedBookings = bookingsList.bookings.map((bookingsInfo, index) => {
+      return (
+          <p key={index}>
+              {bookingsInfo.name} - {bookingsInfo.numberOfGuests} - kl.{bookingsInfo.time} -{bookingsInfo.date} 
+          </p>
+      );
+  })
+    console.log("myBookingsName: ", myBookingsName);
+
 
   const handleClick = async (e) => {
     switch (e.target.value) {
@@ -101,14 +108,13 @@ export const Admin = () => {
     <button value="bookingCreate" onClick={handleClick}>Create a booking</button>
     </form>
     <div>
+      {mappedBookings}<br/>
       {mappedList}
     </div>
     <div className='adminContainer'>
       <img className='adminImg' src='https://images.unsplash.com/photo-1489528792647-46ec39027556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80' alt='takeAway'></img>
       <AdminLogin />
-    </div>
-
-    {/* {makeAnotherList} */}
+    </div>   
   </>
   );
 };
