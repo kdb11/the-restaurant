@@ -35,6 +35,15 @@ export const Reserve = () => {
         );
       });
 
+      const searchBooking = () => {bookingsList.bookings.map((bookingsInfo, index) => {
+        let bookings2 = 0;
+        if(bookingsInfo.date === date && bookingsInfo.time === time) {bookings2++;}
+        console.log(bookings2);
+        return bookings2;
+      });
+      };
+
+
       const addBooking = (index) => {
         setBookingsList((prevValues) => ({
           ...prevValues,
@@ -97,6 +106,19 @@ export const Reserve = () => {
                     <p>Sunday: Closed</p>
                     <br/>
                 </div> 
+
+              <form onSubmit={handleSubmit}>
+                  <label>
+                      <input type="date" name="date" value={date} onChange={(e) => {setDate(e.target.value)}}></input>
+                  </label>
+                  <label className="chooseTime">
+                        <p>18:00</p>
+                        <input type="radio" className="form-content" name="time" value="18" onChange={(e) => {setTime(e.target.value)}}></input>
+                        <p className="padding">21:00</p>
+                        <input type="radio" className="form-content" name="time" value="21" onChange={(e) => {setTime(e.target.value)}}></input>
+                    </label>
+                  <button onClick={searchBooking} value={date} onChange={(e) => { setDate(e.target.value) }}>Sök ledigt</button>
+              </form>
 
             <div className="card">
                 <div className="card-content">
