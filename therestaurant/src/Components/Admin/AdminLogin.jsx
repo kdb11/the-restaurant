@@ -1,10 +1,88 @@
 import React, { useState, useEffect } from 'react';
 import './Admin.css';
+import { /* MappingTest, */ bookingCreate, bookingFetch, bookingRemove, bookings, web3 } from "../contractFunctions";
 
 const AdminLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [account, setAccount] = useState("");
+  const [guests, setGuests] = useState("");
+  const [bookingsIndex, setBookingsIndex] = useState({ bookingsIndex: [] });
+  const [bookingsList, setBookingsList] = useState({ bookings: [] });
+  const [name, setName] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [id, setId] = useState("");
+  const [index, setIndex] = useState("");
+
+  useEffect(() => {
+    const getRestaurant = async () => {
+      const accounts = await web3.eth.getAccounts();
+      setAccount(accounts[0]);
+    };
+    if (account) return;
+    getRestaurant();
+  });
+
+  /*     const restaurantCreate = async () => { 
+          restaurantListContract.methods.createRestaurant(0).call();
+      }; */
+
+      const mappedList = bookingsIndex.bookingsIndex.map(  (index, i) => {
+        return (
+          <div id={i}>
+            {index}-
+          </div>
+        );
+      });
+
+      const addBooking = (index) => {
+        setBookingsList((prevValues) => ({
+          ...prevValues,
+          bookings: [...prevValues.bookings, index]
+        }));
+      };
+
+      const makeList = () =>{ bookingsIndex.bookingsIndex.map( async (index) => {
+          return (
+            addBooking(await bookings(index))
+          );
+        })
+      }
+
+      /* const listOfDates = bookingsList.bookings.map(booking => ({date: booking.date, time: booking.time, name: booking.name})); */
+
+    const mappedBookings = bookingsList.bookings.map((bookingsInfo, index) => {
+      return (
+          <p key={index}>
+              {bookingsInfo.name} - {bookingsInfo.numberOfGuests} - kl.{bookingsInfo.time} -{bookingsInfo.date} 
+          </p>
+      );
+  })
+
+  const handleClick = async (e) => {
+    switch (e.target.value) {
+      case "bookingFetch":
+        setBookingsIndex({ bookingsIndex: await bookingFetch(0) });
+        break;
+      case "bookingRemove":
+        bookingRemove(account, index);
+        break;
+      case "bookingCreate":
+        bookingCreate(account, guests, name, date, time, id);
+        break;
+      default: console.log("")
+        break;
+    }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
+  /* console.log("bookingsIndex: ", bookingsIndex); */
+  console.log("bookingsList: ", bookingsList);
 
   useEffect(() => {
     const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
@@ -30,7 +108,34 @@ const AdminLogin = () => {
       <div className='logoutForm'>
         <div className='loginContainer'>
           <h1>Welcome, Admin!</h1>
+          {/* <AdminLogin /> */}
           <button className='logoutBtn' onClick={handleLogout}>Logout</button>
+
+          <>
+            {/* <button onClick={restaurantCreate()}>Create a restaurant</button> */}
+            <section>
+            <input type="number" onChange={(e) => { setIndex(e.target.value) }}></input>
+            <button value="bookingRemove" onClick={handleClick}>Remove a booking</button>
+            <button value="bookingFetch" onClick={handleClick}>Fetch bookings</button>
+            <button value="bookingFetch" onClick={makeList}>Make bookings</button>
+            </section>
+
+            <form onSubmit={handleSubmit}>
+            <input type="number" placeholder="Number of guests" name="guests" value={guests} onChange={(e) => { setGuests(e.target.value) }}></input>
+            <input type="text" placeholder="Name" name="name" value={name} onChange={(e) => { setName(e.target.value) }}></input>
+            <input type="date" name="date" value={date} onChange={(e) => { setDate(e.target.value) }}></input>
+            <br/> Kl.18:00
+            <input type="radio" name="time" value="18" onChange={(e) => { setTime(e.target.value) }}></input>
+            Kl.21:00
+            <input type="radio" name="time" value="21" onChange={(e) => { setTime(e.target.value) }}></input>
+            <input type="number" placeholder="id" name="id" value={id} onChange={(e) => { setId(e.target.value) }}></input>
+            <button value="bookingCreate" onClick={handleClick}>Create a booking</button>
+            </form>
+            <div>
+              {mappedBookings}<br/>
+              {mappedList}
+            </div>
+          </>
         </div>
       </div>
     );
