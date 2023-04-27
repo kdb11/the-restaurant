@@ -17,13 +17,14 @@ const AdminLogin = () => {
   const [time, setTime] = useState("");
   const [editedDate, setEditedDate] = useState("");
   const [editedTime, setEditedTime] = useState("");
-  const [id, setId] = useState("");
+  const [id, setId] = useState("0");
   const [editedId, setEditedId] = useState("");
   const [index, setIndex] = useState("");
   /* const[edited, SetEdited] = useState(new editedItem("", "", "")); */
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(setId)
   }
 
   useEffect(() => {
@@ -47,6 +48,22 @@ const AdminLogin = () => {
         );
       });
 
+      const handleClick = async (e) => {
+        switch (e.target.value) {
+          case "bookingFetch":
+            setBookingsIndex({ bookingsIndex: await bookingFetch(0) });
+            break;
+          case "bookingRemove":
+            bookingRemove(account, index);
+            break;
+          case "bookingCreate":
+            bookingCreate(account, guests, name, date, time, id);
+            break;
+          default: console.log("")
+            break;
+        }
+      }
+
       const addBooking = (index) => {
         setBookingsList((prevValues) => ({
           ...prevValues,
@@ -54,11 +71,13 @@ const AdminLogin = () => {
         }));
       };
 
-      const makeList = () =>{ bookingsIndex.bookingsIndex.map( async (index) => {
+      const makeList = (e) =>{ bookingsIndex.bookingsIndex.map( async (index) => {
+        addBooking(await bookings(index));
           return (
-            addBooking(await bookings(index))
+            console.log(index)
           );
         })
+        handleClick(e);
       }
 
       /* const listOfDates = bookingsList.bookings.map(booking => ({date: booking.date, time: booking.time, name: booking.name})); */
@@ -71,22 +90,6 @@ const AdminLogin = () => {
       );
   })
 
-  const handleClick = async (e) => {
-    switch (e.target.value) {
-      case "bookingFetch":
-        setBookingsIndex({ bookingsIndex: await bookingFetch(0) });
-        break;
-      case "bookingRemove":
-        bookingRemove(account, index);
-        break;
-      case "bookingCreate":
-        bookingCreate(account, guests, name, date, time, id);
-        break;
-      default: console.log("")
-        break;
-    }
-  }
-
   /* console.log("bookingsIndex: ", bookingsIndex); */
   console.log("bookingsList: ", bookingsList);
 
@@ -95,7 +98,7 @@ const AdminLogin = () => {
     setIsLoggedIn(storedIsLoggedIn === 'true');
   }, []);
 
-  const handleLogin = () => {
+  const  handleLogin = () => {
     if (username === 'admin' && password === 'admin') {
       setIsLoggedIn(true);
       localStorage.setItem('isLoggedIn', 'true');
@@ -110,8 +113,6 @@ const AdminLogin = () => {
   };
 
   function bookingEditTest() {
-    console.log(account, editedName, editedGuests, editedDate, editedTime, editedId);
-    console.log(account, JSON.stringify(editedName), JSON.stringify(editedGuests), JSON.stringify(editedDate), JSON.stringify(editedTime), JSON.stringify(editedId));
     bookingEdit(account, editedGuests, editedName, editedDate, editedTime, editedId);
     }
 
@@ -119,48 +120,62 @@ const AdminLogin = () => {
     return (
       <div className='logoutForm'>
         <div className='loginContainer'>
-          <h1>Welcome, Admin!</h1>
+          <h1 className='welcomeText'>Welcome, Admin!</h1>
           <button className='logoutBtn' onClick={handleLogout}>Logout</button>
 
-          <>
+          <div className='crudContainer'>
             {/* <button onClick={restaurantCreate()}>Create a restaurant</button> */}
-            <section>
-            <input type="number" onChange={(e) => { setIndex(e.target.value) }}></input>
-            <button value="bookingRemove" onClick={handleClick}>Remove a booking</button>
-            <button value="bookingFetch" onClick={handleClick}>Fetch bookings</button>
-            <button value="bookingFetch" onClick={makeList}>Make bookings</button>
-            </section>
-
+              {/* <button value="bookingFetch" onClick={handleClick}>Fetch bookings</button> */}
+              
             <form onSubmit={handleSubmit}>
-            <input type="number" placeholder="Number of guests" name="guests" value={guests} onChange={(e) => { setGuests(e.target.value) }}></input>
-            <input type="text" placeholder="Name" name="name" value={name} onChange={(e) => { setName(e.target.value) }}></input>
-            <input type="date" name="date" value={date} onChange={(e) => { setDate(e.target.value) }}></input>
-            <br/> Kl.18:00
-            <input type="radio" name="time" value="18" onChange={(e) => { setTime(e.target.value) }}></input>
-            Kl.21:00
-            <input type="radio" name="time" value="21" onChange={(e) => { setTime(e.target.value) }}></input>
-            <input type="number" placeholder="id" name="id" value={id} onChange={(e) => { setId(e.target.value) }}></input>
-            <button value="bookingCreate" onClick={handleClick}>Create a booking</button>
+              <div className='createBookingAdminContainer'>
+                <h2>Create</h2>
+                  <input type="number" placeholder="Number of guests" name="guests" value={guests} onChange={(e) => { setGuests(e.target.value) }}></input>
+                  <input type="text" placeholder="Name" name="name" value={name} onChange={(e) => { setName(e.target.value) }}></input>
+                  <input type="date" name="date" value={date} onChange={(e) => { setDate(e.target.value) }}></input>
+                  Kl.18:00
+                  <input type="radio" name="time" value="18" onChange={(e) => { setTime(e.target.value) }}></input>
+                  Kl.21:00
+                  <input type="radio" name="time" value="21" onChange={(e) => { setTime(e.target.value) }}></input>
+                  {/* <input type="number" placeholder="id" name="id" value={id} onChange={(e) => { setId(e.target.value) }}></input> */}
+                  <button value="bookingCreate" onClick={handleClick}>Create a booking</button>
+              </div>
             </form>
 
-            <form onSubmit={handleSubmit}>
-            account, name, Guests, date, time, index
-            <input type="number" placeholder="Number of guests" name="editedGuests" value={editedGuests} onChange={(e) => { setEditedGuests(e.target.value) }}></input>
-            <input type="text" placeholder="Name" name="editedName" value={editedName} onChange={(e) => { setEditedName(e.target.value) }}></input>
-            <input type="date" name="date" value={editedDate} onChange={(e) => { setEditedDate(e.target.value) }}></input>
-            <br/> Kl.18:00
-            <input type="radio" name="time" value="18" onChange={(e) => { setEditedTime(e.target.value) }}></input>
-            Kl.21:00
-            <input type="radio" name="time" value="21" onChange={(e) => { setEditedTime(e.target.value) }}></input>
-            <input type="number" placeholder="id" name="editedId" value={editedId} onChange={(e) => { setEditedId(e.target.value) }}></input>
-            <button className="saveBtn" type="submit" value="bookingFetch" onClick={bookingEditTest}>Edit</button>
-            </form>
-
-            <div>
-              {mappedBookings}<br/>
-              {mappedList}
+            <div className='readBookingAdminContainer'>
+              <h2>Read</h2>
+              <button value="bookingFetch" onClick={makeList}>Read bookings / Press twice</button>
             </div>
-          </>
+
+            <form onSubmit={handleSubmit}>
+              <div className='editBookingAdminContainer'>
+                <h2>Update</h2>
+                <input type="number" placeholder="Number of guests" name="editedGuests" value={editedGuests} onChange={(e) => { setEditedGuests(e.target.value) }}></input>
+                <input type="text" placeholder="Name" name="editedName" value={editedName} onChange={(e) => { setEditedName(e.target.value) }}></input>
+                <input type="date" name="date" value={editedDate} onChange={(e) => { setEditedDate(e.target.value) }}></input>
+                Kl.18:00
+                <input type="radio" name="time" value="18" onChange={(e) => { setEditedTime(e.target.value) }}></input>
+                Kl.21:00
+                <input type="radio" name="time" value="21" onChange={(e) => { setEditedTime(e.target.value) }}></input>
+                <input type="number" placeholder="Id of booking" name="editedId" value={editedId} onChange={(e) => { setEditedId(e.target.value) }}></input>
+                <button className="saveBtn" type="submit" value="bookingFetch" onClick={bookingEditTest}>Update a booking</button>
+              </div>
+            </form>
+
+            <div className='deleteBookingAdminContainer'>
+              <h2>Delete</h2>
+              <input type="number" placeholder='Id of booking' onChange={(e) => { setIndex(e.target.value) }}></input>
+              <button value="bookingRemove" onClick={handleClick}>Delete a booking</button>
+            </div>
+
+          </div>
+
+          <div>
+            {mappedBookings}
+            <br/>
+            {console.log(mappedList)}
+          </div>
+
         </div>
       </div>
     );
