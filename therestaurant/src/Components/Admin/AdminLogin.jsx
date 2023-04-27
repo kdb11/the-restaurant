@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Admin.css';
-import { /* MappingTest, */ bookingCreate, bookingFetch, bookingRemove, bookings, web3 } from "../contractFunctions";
+import { /* MappingTest, */ bookingCreate, bookingFetch, bookingRemove, bookings, web3, bookingEdit } from "../contractFunctions";
 
 const AdminLogin = () => {
   const [username, setUsername] = useState('');
@@ -8,13 +8,23 @@ const AdminLogin = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [account, setAccount] = useState("");
   const [guests, setGuests] = useState("");
+  const [editedGuests, setEditedGuests] = useState("");
   const [bookingsIndex, setBookingsIndex] = useState({ bookingsIndex: [] });
   const [bookingsList, setBookingsList] = useState({ bookings: [] });
   const [name, setName] = useState("");
+  const [editedName, setEditedName] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const [editedDate, setEditedDate] = useState("");
+  const [editedTime, setEditedTime] = useState("");
   const [id, setId] = useState("");
+  const [editedId, setEditedId] = useState("");
   const [index, setIndex] = useState("");
+  /* const[edited, SetEdited] = useState(new editedItem("", "", "")); */
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
 
   useEffect(() => {
     const getRestaurant = async () => {
@@ -56,7 +66,7 @@ const AdminLogin = () => {
     const mappedBookings = bookingsList.bookings.map((bookingsInfo, index) => {
       return (
           <p key={index}>
-              {bookingsInfo.name} - {bookingsInfo.numberOfGuests} - kl.{bookingsInfo.time} -{bookingsInfo.date} 
+            Name: {bookingsInfo.name} Number of guests:{bookingsInfo.numberOfGuests} Time:{bookingsInfo.time} Date:{bookingsInfo.date} Id:{bookingsInfo.id}
           </p>
       );
   })
@@ -75,10 +85,6 @@ const AdminLogin = () => {
       default: console.log("")
         break;
     }
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
   }
 
   /* console.log("bookingsIndex: ", bookingsIndex); */
@@ -103,12 +109,17 @@ const AdminLogin = () => {
     localStorage.removeItem('isLoggedIn');
   };
 
+  function bookingEditTest() {
+    console.log(account, editedName, editedGuests, editedDate, editedTime, editedId);
+    console.log(account, JSON.stringify(editedName), JSON.stringify(editedGuests), JSON.stringify(editedDate), JSON.stringify(editedTime), JSON.stringify(editedId));
+    bookingEdit(account, editedGuests, editedName, editedDate, editedTime, editedId);
+    }
+
   if (isLoggedIn) {
     return (
       <div className='logoutForm'>
         <div className='loginContainer'>
           <h1>Welcome, Admin!</h1>
-          {/* <AdminLogin /> */}
           <button className='logoutBtn' onClick={handleLogout}>Logout</button>
 
           <>
@@ -131,6 +142,20 @@ const AdminLogin = () => {
             <input type="number" placeholder="id" name="id" value={id} onChange={(e) => { setId(e.target.value) }}></input>
             <button value="bookingCreate" onClick={handleClick}>Create a booking</button>
             </form>
+
+            <form onSubmit={handleSubmit}>
+            account, name, Guests, date, time, index
+            <input type="number" placeholder="Number of guests" name="editedGuests" value={editedGuests} onChange={(e) => { setEditedGuests(e.target.value) }}></input>
+            <input type="text" placeholder="Name" name="editedName" value={editedName} onChange={(e) => { setEditedName(e.target.value) }}></input>
+            <input type="date" name="date" value={editedDate} onChange={(e) => { setEditedDate(e.target.value) }}></input>
+            <br/> Kl.18:00
+            <input type="radio" name="time" value="18" onChange={(e) => { setEditedTime(e.target.value) }}></input>
+            Kl.21:00
+            <input type="radio" name="time" value="21" onChange={(e) => { setEditedTime(e.target.value) }}></input>
+            <input type="number" placeholder="id" name="editedId" value={editedId} onChange={(e) => { setEditedId(e.target.value) }}></input>
+            <button className="saveBtn" type="submit" value="bookingFetch" onClick={bookingEditTest}>Edit</button>
+            </form>
+
             <div>
               {mappedBookings}<br/>
               {mappedList}
