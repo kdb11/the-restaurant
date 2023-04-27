@@ -16,7 +16,6 @@ export const bookingCreate = async (account, Guests, name, date, time, id) => {
 export const bookingFetch = async (id) => {
 
     let bookings = await restaurantListContract.methods.getBookings(id).call();
-    console.log(bookings);
     return (bookings);
 
 };

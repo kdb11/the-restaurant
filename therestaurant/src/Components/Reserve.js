@@ -12,20 +12,21 @@ export const Reserve = () => {
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     const [id, setId] = useState("");
-    const [index, setIndex] = useState("");
+    const [showForm, setShowForm] = useState(false);
 
     useEffect(() => {
-        const getRestaurant = async () => {
-            const accounts = await web3.eth.getAccounts();
-            setAccount(accounts[0]);
-        };
-        if (account) return;
-        getRestaurant();
-    });
-
-     const restaurantCreate = async () => { 
-        restaurantListContract.methods.createRestaurant(0).send({from: account});
-    };
+      const getRestaurant = async () => {
+          const accounts = await web3.eth.getAccounts();
+          setAccount(accounts[0]);
+      };
+      const initializeBookings = async () => {
+        console.log("bookings initialized")
+        setBookingsIndex({ bookingsIndex: await bookingFetch(0) });
+      };
+      if (account) return;
+      initializeBookings();
+      getRestaurant();
+  });
 
     const mappedList = bookingsIndex.bookingsIndex.map(  (index, i) => {
         return (
@@ -35,15 +36,6 @@ export const Reserve = () => {
         );
       });
 
-      const searchBooking = () => {bookingsList.bookings.map((bookingsInfo, index) => {
-        let bookings2 = 0;
-        if(bookingsInfo.date === date && bookingsInfo.time === time) {bookings2++;}
-        console.log(bookings2);
-        return bookings2;
-      });
-      };
-
-
       const addBooking = (index) => {
         setBookingsList((prevValues) => ({
           ...prevValues,
@@ -51,41 +43,66 @@ export const Reserve = () => {
         }));
       };
 
-      const makeList = () =>{ bookingsIndex.bookingsIndex.map( async (index) => {
-        return (
+      const makeList = async () =>{ 
+        bookingsIndex.bookingsIndex.map( async (index) => {
+        return (  
           addBooking(await bookings(index))
         );
       })
-    }
+    };
 
-    const mappedBookings = bookingsList.bookings.map((bookingsInfo, index) => {
+      const checkTimes = (e) => {
+        console.log("a");
+        setBookingsList({bookings: []});
+
+        
+        bookingsList.bookings.map((bookingsInfo) => {
+          if(bookingsInfo.date === date && bookingsInfo.time === time) {
+            e += -1;
+          }
+        })
+        return e;
+      };
+
+      const searchBooking = () => {
+        makeList();
+        let x = 15;
+      if ( checkTimes(x)  === 0){
+        alert("No available bookings on "+date+" at kl."+time+"!");
+      }
+      else {
+        setShowForm(true);
+        alert("There are "+ checkTimes(x)+" available bookings!")
+      }
+}
+
+    const mappedBookings = async () =>{
+      setBookingsList({bookings: []});
+      bookingsList.bookings.map((bookingsInfo, index) => {
         return (
             <p key={index}>
                 {bookingsInfo.name} - {bookingsInfo.numberOfGuests} - kl.{bookingsInfo.time} -{bookingsInfo.date} 
             </p>
         );
-    })
+    })}
+
 
     const handleClick = async (e) => {
-        switch (e.target.value) {
+/*         switch (e.target.value) {
           case "bookingFetch":
             setBookingsIndex({ bookingsIndex: await bookingFetch(0) });
             break;
-          case "bookingCreate":
+          case "bookingCreate": */
             bookingCreate(account, guests, name, date, time, id);
-            break;
+/*             break;
           default: console.log("")
             break;
-        }
+        } */
       }
 
       const handleSubmit = (e) => {
         e.preventDefault();
       }
-
-    console.log("guests: ", guests);
-    console.log("bookings: ", bookingsList)
-   
 
     return ( <>
         <div className='reserveContainer'>
@@ -118,6 +135,7 @@ export const Reserve = () => {
                         <input type="radio" className="form-content" name="time" value="21" onChange={(e) => {setTime(e.target.value)}}></input>
                     </label>
                   <button onClick={searchBooking} value={date} onChange={(e) => { setDate(e.target.value) }}>Sök ledigt</button>
+                  <button value="bookingFetch" onClick={makeList}>Make bookings</button>
               </form>
 
             <div className="card">
@@ -127,6 +145,7 @@ export const Reserve = () => {
                     <br />
                     <div className="underline-title"></div>
                 </div>
+                {showForm && (
                 <form onSubmit={handleSubmit}>
 
                     <label>Date</label>
@@ -148,7 +167,7 @@ export const Reserve = () => {
                     <label>Number of guests</label>
                     <br />
                     <label>
-                        <input type="number" className="form-content" name="guests" value={guests} onChange={(e) => {setGuests(e.target.value)}}></input>
+                        <input type="number" max="6" className="form-content" name="guests" value={guests} onChange={(e) => {setGuests(e.target.value)}}></input>
                     </label>
                     <div className="form-border"></div>
                     <br />
@@ -175,11 +194,12 @@ export const Reserve = () => {
                     <div className="buttonContainer">
                         <button id="submit-btn" value="bookingCreate" onClick={handleClick}>Create a booking</button>
                         {/* <button type="submit" >Book</button>  */}
-                        <button value="bookingFetch" onClick={handleClick}>Fetch bookings</button>
+                        
                         <button value="bookingFetch" onClick={makeList}>Make bookings</button>
-                        <button id="submit-btn" onClick={restaurantCreate}>Create a restaurant</button>
+                        {/* <button id="submit-btn" onClick={restaurantCreate}>Create a restaurant</button> */}
                     </div>
                 </form>
+                )}
                 </div> 
             </div>
                 {mappedBookings}<br/>
