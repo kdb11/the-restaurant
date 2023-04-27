@@ -9,8 +9,8 @@ export const restaurantListContract = new web3.eth.Contract(RESTAURANT_LIST_ABI,
 export const bookingRemove = async (account, index) => { 
     restaurantListContract.methods.removeBooking(index).send({from: account});
 };
-export const bookingCreate = async (account, Guests, name, date, time, id) => { 
-    restaurantListContract.methods.createBooking(Guests, name, date, time, id).send({from: account});
+export const bookingCreate = async (account, Guests, name, date, time, index) => { 
+    restaurantListContract.methods.createBooking(Guests, name, date, time, index).send({from: account});
 /*     console.log(restaurantListContract.methods.createBooking(6, "John", 12, 21, 0).send({from: account})) */
 };
 export const bookingFetch = async (id) => {
@@ -26,6 +26,10 @@ export const bookings = async (index) => {
     console.log("Object: ", objectInfo);
     console.log("X: ", x); */
     return x;
+};
+export const bookingEdit = async (account, Guests, name, date, time, index) => { 
+    await restaurantListContract.methods.editBooking(index, Guests, name, date, time ).send({from: account});
+
 };
 
 /* 
