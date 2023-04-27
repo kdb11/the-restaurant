@@ -84,9 +84,27 @@ const AdminLogin = () => {
 
     const mappedBookings = bookingsList.bookings.map((bookingsInfo, index) => {
       return (
-          <p key={index}>
-            Name: {bookingsInfo.name} Number of guests:{bookingsInfo.numberOfGuests} Time:{bookingsInfo.time} Date:{bookingsInfo.date} Id:{bookingsInfo.id}
+        <div className='readBookingsContainer' key={index}>
+          <p>
+            Name: {bookingsInfo.name}
           </p>
+
+          <p>
+            Number of guests: {bookingsInfo.numberOfGuests}
+          </p>
+
+          <p>
+          Time: {bookingsInfo.time}
+          </p>
+
+          <p>
+          Date: {bookingsInfo.date}
+          </p>
+          
+          <p>
+           Id: {bookingsInfo.id}
+          </p>
+        </div>
       );
   })
 

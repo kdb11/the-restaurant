@@ -173,13 +173,17 @@ label {
     text-align: center;
   }
 
-  .crudContainer {
+  .crudContainer, .readBookingsContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     padding-top: 20px;
     width: 100vh;
     left: -25%;
+  }
+
+  .readBookingsContainer {
+    border-bottom: 1px solid rgba(20,20,20,0.4);
   }
 
   ::placeholder{
