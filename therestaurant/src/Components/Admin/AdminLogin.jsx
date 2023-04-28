@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Admin.css';
-import { /* MappingTest, */ bookingCreate, bookingFetch, bookingRemove, bookings, web3, bookingEdit } from "../contractFunctions";
+import { bookingCreate, bookingFetch, bookingRemove, bookings, web3, bookingEdit } from "../contractFunctions";
 
 const AdminLogin = () => {
   const [username, setUsername] = useState('');
@@ -20,7 +20,6 @@ const AdminLogin = () => {
   const [id, setId] = useState("0");
   const [editedId, setEditedId] = useState("");
   const [index, setIndex] = useState("");
-  /* const[edited, SetEdited] = useState(new editedItem("", "", "")); */
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,12 +28,17 @@ const AdminLogin = () => {
 
   useEffect(() => {
     const getRestaurant = async () => {
-      const accounts = await web3.eth.getAccounts();
-      setAccount(accounts[0]);
+        const accounts = await web3.eth.getAccounts();
+        setAccount(accounts[0]);
+    };
+    const initializeBookings = async () => {
+      console.log("bookings initialized")
+      setBookingsIndex({ bookingsIndex: await bookingFetch(0) });
     };
     if (account) return;
+    initializeBookings();
     getRestaurant();
-  });
+});
 
   /*     const restaurantCreate = async () => { 
           restaurantListContract.methods.createRestaurant(0).call();
@@ -79,8 +83,6 @@ const AdminLogin = () => {
         })
         handleClick(e);
       }
-
-      /* const listOfDates = bookingsList.bookings.map(booking => ({date: booking.date, time: booking.time, name: booking.name})); */
 
     const mappedBookings = bookingsList.bookings.map((bookingsInfo, index) => {
       return (
@@ -142,8 +144,6 @@ const AdminLogin = () => {
           <button className='logoutBtn' onClick={handleLogout}>Logout</button>
 
           <div className='crudContainer'>
-            {/* <button onClick={restaurantCreate()}>Create a restaurant</button> */}
-              {/* <button value="bookingFetch" onClick={handleClick}>Fetch bookings</button> */}
               
             <form onSubmit={handleSubmit}>
               <div className='createBookingAdminContainer'>
@@ -155,14 +155,13 @@ const AdminLogin = () => {
                   <input type="radio" name="time" value="18" onChange={(e) => { setTime(e.target.value) }}></input>
                   Kl.21:00
                   <input type="radio" name="time" value="21" onChange={(e) => { setTime(e.target.value) }}></input>
-                  {/* <input type="number" placeholder="id" name="id" value={id} onChange={(e) => { setId(e.target.value) }}></input> */}
                   <button value="bookingCreate" onClick={handleClick}>Create a booking</button>
               </div>
             </form>
 
             <div className='readBookingAdminContainer'>
               <h2>Read</h2>
-              <button value="bookingFetch" onClick={makeList}>Read bookings / Press twice</button>
+              <button value="bookingFetch" onClick={makeList}>Read bookings</button>
             </div>
 
             <form onSubmit={handleSubmit}>
