@@ -63,18 +63,27 @@ export const Reserve = () => {
       else {
         setShowForm(true);
         Swal.fire(
-          'There are available tables',
+          'There '+checkTimes(x)+' are available tables',
           'When booking you agree that we save your information on our blockchain.',
         );
       }
     }
 
-    const handleClick = async (e) => {
+    const handleClick = async () => {
       bookingCreate(account, guests, name, date, time);
     }
 
     const handleSubmit = (e) => {
       e.preventDefault();
+      } 
+
+    const maxGuests = (e) => {
+      if (e.target.value > 6) {
+        /*  e.target.value = null; */
+         alert("No more than 6 per booking! If you are more than 6 people, please book 2 times or call us at (212) 554-1515")
+       
+     }else
+       {setGuests(e.target.value)}
     }
 
   return ( <>
@@ -145,7 +154,7 @@ export const Reserve = () => {
                 <label>Number of guests</label>
                 <br />
                 <label>
-                    <input type="number" required max="6" className="form-content" name="guests" value={guests} onChange={(e) => {setGuests(e.target.value)}}></input>
+                    <input type="number" required max="6" className="form-content" name="guests" value={guests} onChange={(e) => {maxGuests(e)}}></input>
                 </label>
                 <div className="form-border"></div>
                 <br />  
