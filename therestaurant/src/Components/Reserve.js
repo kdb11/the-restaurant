@@ -55,7 +55,6 @@ export const Reserve = () => {
         console.log("a");
         setBookingsList({bookings: []});
 
-
         bookingsList.bookings.map((bookingsInfo) => {
           if(bookingsInfo.date === date && bookingsInfo.time === time) {
             e += -1;
@@ -201,6 +200,8 @@ export const Reserve = () => {
                     <div className="form-border"></div>
                     <br />
 
+                    
+
                     {/* <label>Id</label> */}
                     {/* <br /> */}
                     {/* <label><input type="number" className="form-content" placeholder="id" name="id" value={id} onChange={(e) => {setId(e.target.value)}}></input> */}
@@ -208,9 +209,11 @@ export const Reserve = () => {
                     {/* <div className="form-border"></div> */}
                     {/* <br /> */}
 
+                    
                     <div className="buttonContainer">
                         <button id="submit-btn" value="bookingCreate" onClick={handleClick}>Create a booking</button>
                         {/* <button type="submit" >Book</button>  */}
+                        
 
                         <button value="bookingFetch" onClick={makeList}>Make bookings</button>
                         {/* <button id="submit-btn" onClick={restaurantCreate}>Create a restaurant</button> */}
