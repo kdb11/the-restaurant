@@ -221,6 +221,8 @@ const AdminLogin = () => {
             <div className="form-border"></div>
             <br />
             <button type='button' id="submit-btn" onClick={handleLogin}>Login</button>
+            <p>Username=admin</p>
+            <p>Password=admin</p>
           </div>
         </form>
       </div> 
