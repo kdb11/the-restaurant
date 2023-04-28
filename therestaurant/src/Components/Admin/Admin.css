@@ -59,7 +59,7 @@
     justify-content: center;
     transform: translate(-49%);
     left: 50%;
-    top: 50%;
+    top: 15%;
     /* background-color: blue; */
 }
 
@@ -77,6 +77,15 @@
 .logoutBtn {
     position: relative;
     left: 38%;
+    background-color: red;
+    color: white;
+    font-size: 25px;
+}
+
+.welcomeText{
+  display: flex;
+  position: relative;
+  left: 25%;
 }
 
 /* .card {
@@ -152,4 +161,31 @@ label {
     height: 2px;
     margin: -1.1rem auto 0 auto;
     width: 89px;
+  }
+
+  .editBookingAdminContainer, .createBookingAdminContainer, .deleteBookingAdminContainer, .readBookingAdminContainer{
+    display: flex;
+    flex-direction: column;
+    height: min-content;
+    width: max-content;
+    padding: 20px;
+    box-shadow: 1px 2px 3px 4px rgba(20,20,20,0.4);
+    text-align: center;
+  }
+
+  .crudContainer, .readBookingsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    width: 100vh;
+    left: -25%;
+  }
+
+  .readBookingsContainer {
+    border-bottom: 1px solid rgba(20,20,20,0.4);
+  }
+
+  ::placeholder{
+    text-align: center;
   }

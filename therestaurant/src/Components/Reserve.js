@@ -36,7 +36,6 @@ export const Reserve = () => {
           </div>
         );
       });
-
       const addBooking = (index) => {
         setBookingsList((prevValues) => ({
           ...prevValues,
@@ -56,7 +55,6 @@ export const Reserve = () => {
         console.log("a");
         setBookingsList({bookings: []});
 
-        
         bookingsList.bookings.map((bookingsInfo) => {
           if(bookingsInfo.date === date && bookingsInfo.time === time) {
             e += -1;
@@ -112,7 +110,6 @@ export const Reserve = () => {
         <div className='reserveContainer'>
             <img className='reserveImg' src='https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2274&q=80' alt='restaurantOutside'></img>
             
-
             <div className='bookContainer'>
                 <div className='reservationText'> 
                     <p>RESERVATIONS:    212 554 1515</p>
@@ -159,7 +156,6 @@ export const Reserve = () => {
                     </label>
                     <div className="form-border"></div>
                     <br />
-
                     <label>Name</label>
                     <br/>
                     <label>
@@ -203,18 +199,22 @@ export const Reserve = () => {
                     </label>
                     <div className="form-border"></div>
                     <br />
+
                     
+
                     {/* <label>Id</label> */}
                     {/* <br /> */}
                     {/* <label><input type="number" className="form-content" placeholder="id" name="id" value={id} onChange={(e) => {setId(e.target.value)}}></input> */}
                     {/* </label> */}
                     {/* <div className="form-border"></div> */}
                     {/* <br /> */}
+
                     
                     <div className="buttonContainer">
                         <button id="submit-btn" value="bookingCreate" onClick={handleClick}>Create a booking</button>
                         {/* <button type="submit" >Book</button>  */}
                         
+
                         <button value="bookingFetch" onClick={makeList}>Make bookings</button>
                         {/* <button id="submit-btn" onClick={restaurantCreate}>Create a restaurant</button> */}
                     </div>
@@ -228,5 +228,4 @@ export const Reserve = () => {
         </div>
         </>
         )
-
 };
