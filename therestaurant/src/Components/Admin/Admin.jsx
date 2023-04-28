@@ -10,6 +10,4 @@ export const Admin = () => {
   </>
   );
 };
-
-//To show dates 1) click fetch, 2) Make bookings => view console for feedback
 export default Admin;

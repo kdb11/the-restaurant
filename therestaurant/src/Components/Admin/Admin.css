@@ -60,7 +60,6 @@
     transform: translate(-49%);
     left: 50%;
     top: 15%;
-    /* background-color: blue; */
 }
 
 .logoutContainer {
@@ -87,12 +86,6 @@
   position: relative;
   left: 25%;
 }
-
-/* .card {
-    width: 25%;
-    height: 50%;
-    background-color: dimgrey;
-} */
 
 
 label {

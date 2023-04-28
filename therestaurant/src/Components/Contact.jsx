@@ -9,7 +9,6 @@ export const Contact = () => {
     };
 
     const handleClick = () => {
-        //alert("Thanks for your message\nWe will replay to you as fast as we can!")
         Swal.fire(
             'Thanks for your message!',
             'We will contact you as fast as we can',

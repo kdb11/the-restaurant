@@ -110,7 +110,6 @@ const AdminLogin = () => {
       );
   })
 
-  /* console.log("bookingsIndex: ", bookingsIndex); */
   console.log("bookingsList: ", bookingsList);
 
   useEffect(() => {
