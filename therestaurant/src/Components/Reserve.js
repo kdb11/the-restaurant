@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { bookingCreate,restaurantListContract, bookingFetch, bookings, web3 } from "./contractFunctions";
 import './Reserve.css';
+import Swal from 'sweetalert2'
 
 
 export const Reserve = () => {
@@ -72,7 +73,10 @@ export const Reserve = () => {
       }
       else {
         setShowForm(true);
-        alert("There are "+ checkTimes(x)+" available bookings!")
+        Swal.fire(
+          'There are available tables',
+          'When booking you agree that we save your information on our blockchain.',
+        );
       }
 }
 
@@ -164,6 +168,22 @@ export const Reserve = () => {
                     <div className="form-border"></div>
                     <br />
 
+                    <label>Email</label>
+                    <br/>
+                    <label>
+                        <input type="email" className="form-content" name="email"></input>
+                    </label>
+                    <div className="form-border"></div>
+                    <br />
+
+                    <label>Phone</label>
+                    <br/>
+                    <label>
+                        <input type="text" className="form-content" name="phonenumber"></input>
+                    </label>
+                    <div className="form-border"></div>
+                    <br />
+
                     <label>Number of guests</label>
                     <br />
                     <label>
@@ -184,12 +204,12 @@ export const Reserve = () => {
                     <div className="form-border"></div>
                     <br />
                     
-                    <label>Id</label>
-                    <br />
-                    <label><input type="number" className="form-content" placeholder="id" name="id" value={id} onChange={(e) => {setId(e.target.value)}}></input>
-                    </label>
-                    <div className="form-border"></div>
-                    <br />
+                    {/* <label>Id</label> */}
+                    {/* <br /> */}
+                    {/* <label><input type="number" className="form-content" placeholder="id" name="id" value={id} onChange={(e) => {setId(e.target.value)}}></input> */}
+                    {/* </label> */}
+                    {/* <div className="form-border"></div> */}
+                    {/* <br /> */}
                     
                     <div className="buttonContainer">
                         <button id="submit-btn" value="bookingCreate" onClick={handleClick}>Create a booking</button>
