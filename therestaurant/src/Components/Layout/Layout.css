@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap');
+
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.leftFooterText {
+    display: flex;
+    flex-direction: row;
+    width: 20vw;
+    justify-content: space-evenly;
+}
+
+.middleFooterText {
+    display: flex;
+    flex-direction: row;
+    width: 25vw;
+    justify-content: space-evenly;
+}
+
+.rightFooterText {
+    display: flex;
+    flex-direction: row;
+    width: 20vw;
+    justify-content: space-evenly;
+}
+
+header {
+    height: 10vh;
+    color: white;
+    font-size: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+main {
+    height: 75vh;
+}
+
+footer {
+    height: 5vh;
+    background-color: rgba(255, 255, 255, 0.75);
+    bottom: 0px;
+    position: absolute;
+    width: 100%;
+    justify-content: space-between;
+}
+
+a, a:visited, a:hover, a:active {
+    color: inherit;
+  }
+
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:active { text-decoration: underline; }
+
+.icons {
+    font-size:x-large;
+}
+
+.menu-btn {
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 70px;
+    padding: 20px;
+}
+
+.headerWrapper {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+}
+
+.headerText {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.brandName {
+    font-family: 'Castoro Titling', cursive;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.secondHeaderText{
+    padding-left: 10px;
+    font-family: 'Castoro Titling', cursive;
+    font-size: 20px;
+    font-weight: 400;
+}
